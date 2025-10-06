@@ -1,4 +1,4 @@
-# 📝 Tayyaba TaskFlow — Flask To-Do App
+# 📝 TaskFlow — Flask To-Do App
 
 A simple and powerful task management web app built with **Flask**.  
 It includes user **signup, login, and logout**, and allows each user to **create, edit, mark complete, or delete** their own tasks.
