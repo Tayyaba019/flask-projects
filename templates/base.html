@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <!-- ===== HEADER / NAVBAR ===== -->
+    <header>
+        <div class="navbar">
+            <div class="logo"><a href="{{ url_for('home') }}">TodoApp</a></div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('logout') }}" class="logout-btn">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a class="signup-btn" href="{{ url_for('signup') }}">Signup</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main>
+        <!-- Flash messages section -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p>© 2025 TodoApp. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+
+{% block head %}
+    <title>TaskFlow - Home</title>
+{% endblock %}
+
+{% block content %}
+<div class="task-container">
+    <h1>{{current_user.username}} TaskFlow</h1> 
+
+    {% if tasks | length < 1 %}
+        <h3 class="no-task">There are no tasks... Create one here</h3>
+    {% else %}
+    <table class="task-table"> 
+        <tr> 
+            <th>Task</th>
+            <th>Added</th>
+            <th>Action</th>
+        </tr> 
+        {% for task in tasks %}
+            <tr> 
+                <td>{{task.content}}</td>
+                <td>{{task.created.strftime("%y-%m-%d")}}</td>
+                <td class="actions">
+                    {% if task.complete == 0 %}
+                        <a href="/complete/{{ task.id }}" class="btn-done">✅ Mark as Done</a>
+                    {% else %}
+                        <span class="completed-text">✔ Completed</span><br>
+                        <a href="/undo/{{ task.id }}" class="btn-undo">↩ Undo</a>
+                    {% endif %}
+                    <a href="/edit/{{task.id}}" class="btn edit-btn">Edit</a>
+                    <a href="/delete/{{task.id}}" class="btn delete-btn">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table> 
+    {% endif %}
+
+    <form action='/home' method='POST' class="task-form">
+        <input type='text' name="content" id="content" placeholder="Enter a new task..." required/>
+        <button type='submit' id="btn_add">Add Task</button> 
+    </form>
+</div>
+{% endblock %}

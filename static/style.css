@@ -1,0 +1,562 @@
+/* ===== VARIABLES ===== */
+:root {
+  --primary-color: #1E3A8A;   /* dark navy blue */
+  --danger-color: #DC2626;    /* red for delete */
+  --light-bg: #F4F6F9;        /* background page */
+  --card-bg: #FFFFFF;         /* white card */
+  --text-dark: #2C2C2C;       /* text */
+  --row-alt: #EEF2F7;         /* table alternate row */
+  --border-radius: 10px;
+}
+
+/* ===== PAGE LAYOUT FIX ===== */
+body {
+  font-family: 'Segoe UI', 'Poppins', sans-serif;
+  background: var(--light-bg);
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* stack header, main, footer */
+  margin: 0;
+}
+
+/* Make sure header and footer don’t shrink */
+header, footer {
+  flex-shrink: 0;
+}
+
+/* Main grows in middle */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* ===== NAVBAR STYLING ===== */
+header {
+  background: var(--primary-color);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo a {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.8rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #c3d4ff; /* lighter version of primary */
+}
+
+.nav-links .signup-btn {
+  background: #fff;
+  color: var(--primary-color) !important;
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.nav-links .signup-btn:hover {
+  background: #f5f5f5;
+  color: #162d6b;
+}
+
+/* ===== LOGOUT BUTTON ===== */
+.nav-links .logout-btn {
+  background: var(--danger-color);
+  color: #fff !important;
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.nav-links .logout-btn:hover {
+  background: #b91c1c; /* darker red */
+  transform: translateY(-2px);
+}
+
+/* ===== ALERT STYLING ===== */
+.alert {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+/* Flash categories */
+.alert-danger {
+  background: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}
+
+.alert-success {
+  background: #d1e7dd;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+
+.alert-info {
+  background: #cff4fc;
+  color: #055160;
+  border: 1px solid #b6effb;
+}
+
+/* ===== FORM STYLING ===== */
+.form-container {
+  background: var(--card-bg);
+  padding: 2rem 2.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.form-container h1 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.login-form input {
+  padding: 0.9rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.login-form input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 4px rgba(30, 58, 138, 0.3);
+}
+
+.btn {
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.9rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background: #2a4cb8; /* slightly lighter blue */
+  transform: translateY(-2px);
+}
+
+/* Signup link */
+.signup-link {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+.signup-link a {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+/* ===== FORM STYLING (Signup + Login Common) ===== */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Login/Signup link at bottom */
+.login-link {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+.login-link a {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.redirect-msg {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.redirect-msg a {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.redirect-msg a:hover {
+  text-decoration: underline;
+}
+
+/* ===== TASK PAGE STYLING ===== */
+.task-container {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  max-width: 800px;
+  width: 100%;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.task-container h1 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.no-task {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 1.5rem 0;
+}
+
+/* ===== TABLE STYLING ===== */
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  background: #fff;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.task-table th, 
+.task-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.task-table th {
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+}
+
+.task-table tr:nth-child(even) {
+  background: var(--row-alt);
+}
+
+.actions {
+  text-align: center;
+}
+
+/* ===== BUTTON STYLING ===== */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s;
+  margin: 0.2rem;
+}
+
+.edit-btn {
+  background: #2563eb; /* blue */
+  color: #fff;
+}
+
+.edit-btn:hover {
+  background: #1d4ed8;
+}
+
+.delete-btn {
+  background: var(--danger-color);
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+}
+
+/* ===== ADD TASK FORM ===== */
+.task-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  gap: 0.5rem;
+}
+
+.task-form input {
+  flex: 1;
+  padding: 0.7rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.task-form button {
+  background: var(--primary-color);
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.task-form button:hover {
+  background: #2a4cb8;
+}
+
+/* ===== EDIT PAGE STYLING ===== */
+.edit-container {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  max-width: 600px;
+  width: 100%;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.edit-container h1 {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.edit-form {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.edit-form input {
+  flex: 1;
+  padding: 0.8rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.update-btn {
+  background: var(--primary-color);
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.update-btn:hover {
+  background: #2a4cb8;
+  transform: translateY(-2px);
+}
+
+/* ===== HERO / WELCOME SECTION ===== */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #eaf1ff, #f7faff);
+  border-radius: var(--border-radius);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+  margin: 2rem auto;
+  max-width: 900px;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.hero-content h1 span {
+  color: #2a4cb8;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  color: #444;
+  max-width: 650px;
+  margin: 0 auto 2rem auto;
+  line-height: 1.6;
+}
+
+.hero-btn {
+  background: var(--primary-color);
+  color: #fff;
+  padding: 0.9rem 2rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.hero-btn:hover {
+  background: #2a4cb8;
+  transform: translateY(-3px);
+}
+
+
+.btn-done {
+  background-color: #22c55e;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.btn-done:hover {
+  background-color: #16a34a;
+}
+
+.btn-undo {
+  background-color: #fbbf24;
+  color: #000;
+  padding: 6px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.btn-undo:hover {
+  background-color: #f59e0b;
+}
+
+.completed-text {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+
+
+
+
+
+
+
+/* ===== WELCOME SECTION ===== */
+.welcome {
+  text-align: center;
+  margin: 3rem auto;
+  padding: 20rem;
+  max-width: 700px;
+}
+
+.welcome h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.welcome p {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.welcome .signup-btn {
+  background: var(--primary-color);
+  color: #fff;
+  padding: 0.9rem 1.8rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.welcome .signup-btn:hover {
+  background: #2a4cb8; /* slightly lighter */
+  transform: translateY(-2px);
+}
+
+/* ===== FOOTER STYLING ===== */
+footer {
+  background: var(--primary-color);
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  margin-top: auto;
+}
+
+footer a {
+  color: #f0f0f0;
+  text-decoration: none;
+  margin-left: 0.5rem;
+}
+
+footer a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+
