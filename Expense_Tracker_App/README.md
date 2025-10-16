@@ -80,30 +80,37 @@ Expense_Tracker_App/
 ### 1️⃣ Clone the Repository
 
 2️⃣ Create a Virtual Environment
+```
 python -m venv venv
-
+```
 
 Activate it:
 
 # On Mac/Linux
+```
 source venv/bin/activate
-
+```
 # On Windows
+```
 venv\Scripts\activate
-
+```
 
 3️⃣ Install Dependencies
+```
 pip install -r requirements.txt
-
+```
 4️⃣ Initialize the Database
 python
 Open a Python shell:
+```
 >>> from app import db
 >>> db.create_all()
 >>> exit()
+```
 5️⃣ Run the Application
+```
 flask run
-
+```
 Then open the app in your browser:
 👉 http://127.0.0.1:5000/
 
