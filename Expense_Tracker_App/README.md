@@ -47,7 +47,7 @@ It provides secure authentication, data filtering, chart visualization, and CSV 
 ---
 
 ## 🏗️ Project Structure
-
+```
 Expense_Tracker_App/
 │
 ├── app.py # Main Flask application
@@ -67,6 +67,9 @@ Expense_Tracker_App/
 ├── instance/ # SQLite database file (.db)
 ├── requirements.txt # Dependencies list
 └── README.md # Project documentation
+
+```
+
 
 
 
