@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<section class="p-10 text-white">
+
+  <!-- 🏠 Header -->
+  <div class="text-center mb-12">
+    <h1 class="text-5xl font-extrabold mb-4">
+      Welcome, <span class="text-brand">{{ user.username }}</span> 👋
+    </h1>
+    <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+      Here’s a quick overview of your expenses and recent activity.
+    </p>
+  </div>
+
+  <!-- 📊 Summary Cards -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+    <div class="bg-slate-800/70 p-8 rounded-2xl shadow-lg border border-slate-700 hover:-translate-y-1 hover:shadow-xl transition">
+      <h3 class="text-slate-400 mb-2 text-sm uppercase tracking-wide">Total Expenses</h3>
+      <p class="text-3xl font-bold text-brand">${{ total_expenses or 0 }}</p>
+    </div>
+
+    <div class="bg-slate-800/70 p-8 rounded-2xl shadow-lg border border-slate-700 hover:-translate-y-1 hover:shadow-xl transition">
+      <h3 class="text-slate-400 mb-2 text-sm uppercase tracking-wide">This Month</h3>
+      <p class="text-3xl font-bold text-emerald-400">${{ monthly_expenses or 0 }}</p>
+    </div>
+
+    <div class="bg-slate-800/70 p-8 rounded-2xl shadow-lg border border-slate-700 hover:-translate-y-1 hover:shadow-xl transition">
+      <h3 class="text-slate-400 mb-2 text-sm uppercase tracking-wide">Total Entries</h3>
+      <p class="text-3xl font-bold text-amber-400">{{ total_entries or 0 }}</p>
+    </div>
+  </div>
+
+  <!-- 📅 Quick Actions -->
+  <div class="text-center">
+    <h2 class="text-2xl font-semibold mb-6 text-brand">Quick Actions</h2>
+    <div class="flex flex-wrap justify-center gap-6">
+      <a href="{{ url_for('add') }}" class="bg-brand text-white px-8 py-4 rounded-xl font-semibold hover:bg-brand/90 transition">
+        ➕ Add Expense
+      </a>
+      <a href="{{ url_for('view') }}" class="bg-slate-800 px-8 py-4 rounded-xl border border-slate-700 font-semibold hover:bg-slate-700 transition">
+        📋 View All
+      </a>
+      <a href="{{ url_for('index') }}" class="bg-slate-800 px-8 py-4 rounded-xl border border-slate-700 font-semibold hover:bg-slate-700 transition">
+        📊 View Charts
+      </a>
+      <a href="{{ url_for('export_csv') }}" class="bg-slate-800 px-8 py-4 rounded-xl border border-slate-700 font-semibold hover:bg-slate-700 transition">
+        ⬇️ Export CSV
+      </a>
+    </div>
+  </div>
+
+  <!-- 🧠 Optional: Charts Preview -->
+  {% if chart_url %}
+  <div class="mt-16 text-center">
+    <h2 class="text-2xl font-semibold mb-6 text-brand">Expense Breakdown</h2>
+    <img src="data:image/png;base64,{{ chart_url }}" 
+         alt="Expense Chart"
+         class="mx-auto rounded-2xl border border-slate-700 shadow-lg w-full max-w-lg">
+  </div>
+  {% endif %}
+
+</section>
+{% endblock %}

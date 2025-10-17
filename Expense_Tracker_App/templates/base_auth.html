@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-white flex flex-col min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center bg-slate-900 px-8 py-4">
+    <a href="{{ url_for('home') }}" class="text-xl font-bold">Expense Tracker</a>
+    <div class="flex gap-6">
+      <a href="{{ url_for('home') }}" class="hover:text-brand">Home</a>
+      <a href="{{ url_for('login') }}" class="hover:text-brand">dashboard</a>
+      <a href="{{ url_for('signup') }}" class="hover:text-brand">Signup</a>
+      <a href="{{ url_for('login') }}" class="hover:text-brand">Login</a>
+    </div>
+  </nav>
+
+  <!-- Page content -->
+  <main class="flex-1 flex justify-center items-center px-6">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-6 text-center text-sm">
+    © 2025 Expense Tracker · Built with Flask and 💙
+  </footer>
+</body>
+</html>

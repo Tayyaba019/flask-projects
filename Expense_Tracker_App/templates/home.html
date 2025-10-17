@@ -1,0 +1,101 @@
+{% extends 'base_auth.html' %}
+{% block title %}Expense Tracker · Smart Finance Made Simple{% endblock %}
+
+{% block content %}
+
+<main class="flex flex-col gap-24">
+
+  <!-- 🌟 HERO SECTION -->
+  <section class="w-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-24 px-8 shadow-lg">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-16">
+      
+      <!-- Left: Text -->
+      <div class="flex-1 text-center md:text-left">
+        <h1 class="text-6xl font-extrabold text-white mb-6 leading-tight">
+          Simplify Your <span class="text-brand">Expense Tracking</span>
+        </h1>
+        <p class="text-slate-300 text-lg mb-10 leading-relaxed max-w-lg mx-auto md:mx-0">
+          Manage your spending, visualize trends, and stay financially aware — all in one intuitive dashboard.
+        </p>
+
+        <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-5">
+          <a href="{{ url_for('signup') }}" 
+             class="bg-brand text-white px-10 py-4 rounded-xl text-lg font-semibold hover:bg-brand/90 transition duration-300 shadow-lg shadow-brand/20">
+            Get Started
+          </a>
+          <a href="{{ url_for('login') }}" 
+             class="border border-brand text-brand px-10 py-4 rounded-xl text-lg font-semibold hover:bg-brand/20 transition duration-300">
+            Login
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Image -->
+      <div class="flex-1 flex justify-center md:justify-end">
+        <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png"
+             class="w-96 max-w-full opacity-95 drop-shadow-2xl"
+             alt="Expense tracking illustration">
+      </div>
+    </div>
+  </section>
+
+  <!-- 💡 FEATURE SECTION -->
+  <section class="w-full bg-slate-900 py-24 px-8 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-4xl font-extrabold text-white mb-16">
+        Why Choose <span class="text-brand">Expense Tracker?</span>
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div class="p-10 bg-slate-800/70 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition duration-300">
+          <img src="https://cdn-icons-png.flaticon.com/512/3094/3094852.png"
+               class="w-20 mx-auto mb-6 opacity-90" alt="Track icon">
+          <h3 class="text-2xl font-semibold text-white mb-4">Track Your Spending</h3>
+          <p class="text-slate-400 text-base leading-relaxed">
+            Log every expense effortlessly and stay in control of your daily finances.
+          </p>
+        </div>
+
+        <div class="p-10 bg-slate-800/70 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition duration-300">
+          <img src="https://cdn-icons-png.flaticon.com/512/2972/2972557.png"
+               class="w-20 mx-auto mb-6 opacity-90" alt="Analytics icon">
+          <h3 class="text-2xl font-semibold text-white mb-4">Visualize Your Data</h3>
+          <p class="text-slate-400 text-base leading-relaxed">
+            See your spending habits in clear and insightful charts and graphs.
+          </p>
+        </div>
+
+        <div class="p-10 bg-slate-800/70 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition duration-300">
+          <img src="https://cdn-icons-png.flaticon.com/512/3556/3556385.png"
+               class="w-20 mx-auto mb-6 opacity-90" alt="Security icon">
+          <h3 class="text-2xl font-semibold text-white mb-4">Safe & Secure</h3>
+          <p class="text-slate-400 text-base leading-relaxed">
+            Your expense data stays protected with reliable authentication and privacy.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🚀 CALL TO ACTION -->
+  <section class="relative w-full bg-gradient-to-r from-brand/90 via-brand to-brand/90 py-24 px-8 text-center rounded-t-3xl shadow-2xl">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-5xl font-extrabold text-white mb-6 leading-tight">
+        Ready to Take Control of Your Finances?
+      </h2>
+      <p class="text-white/90 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+        Start tracking your expenses today and gain insights that help you spend smarter and save more.
+      </p>
+      <a href="{{ url_for('signup') }}" 
+         class="inline-block bg-blue text-brand font-semibold text-lg px-10 py-4 rounded-xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition duration-300">
+        Create Your Free Account
+      </a>
+    </div>
+
+    <!-- Decorative gradient glow -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent rounded-t-3xl pointer-events-none"></div>
+  </section>
+
+</main>
+
+{% endblock %}
