@@ -29,7 +29,7 @@ def create_App():
     db.init_app(app)
 
     login_manager = LoginManager(app)
-    login_manager.login_view = 'login'
+    # login_manager.login_view = 'login'
 
 
     bcrypt = Bcrypt(app)

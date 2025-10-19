@@ -9,24 +9,50 @@
 <body class="bg-slate-950 text-white flex flex-col min-h-screen">
 
   <!-- Navbar -->
-  <nav class="flex justify-between items-center bg-slate-900 px-8 py-4">
-    <a href="{{ url_for('home') }}" class="text-xl font-bold">Expense Tracker</a>
-    <div class="flex gap-6">
-      <a href="{{ url_for('home') }}" class="hover:text-brand">Home</a>
-      <a href="{{ url_for('login') }}" class="hover:text-brand">dashboard</a>
-      <a href="{{ url_for('signup') }}" class="hover:text-brand">Signup</a>
-      <a href="{{ url_for('login') }}" class="hover:text-brand">Login</a>
+  <nav class="bg-slate-900 px-6 py-4">
+    <div class="flex justify-between items-center">
+      <!-- Logo -->
+      <a href="{{ url_for('home') }}" class="text-xl font-bold">Expense Tracker</a>
+
+      <!-- Hidden checkbox to toggle menu -->
+      <input type="checkbox" id="menu-toggle" class="peer hidden" />
+
+      <!-- Hamburger icon -->
+      <label for="menu-toggle" class="cursor-pointer md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </label>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex gap-6">
+        <a href="{{ url_for('home') }}" class="hover:text-cyan-400 transition">Home</a>
+        <a href="{{ url_for('login') }}" class="hover:text-cyan-400 transition">Dashboard</a>
+        <a href="{{ url_for('signup') }}" class="hover:text-cyan-400 transition">Signup</a>
+        <a href="{{ url_for('login') }}" class="hover:text-cyan-400 transition">Login</a>
+      </div>
+    </div>
+
+    <!-- Mobile Links (shown when checkbox is checked) -->
+    <div class="hidden peer-checked:flex flex-col mt-4 space-y-3 md:hidden">
+      <a href="{{ url_for('home') }}" class="block hover:text-cyan-400">Home</a>
+      <a href="{{ url_for('login') }}" class="block hover:text-cyan-400">Dashboard</a>
+      <a href="{{ url_for('signup') }}" class="block hover:text-cyan-400">Signup</a>
+      <a href="{{ url_for('login') }}" class="block hover:text-cyan-400">Login</a>
     </div>
   </nav>
 
   <!-- Page content -->
-  <main class="flex-1 flex justify-center items-center px-6">
+  <main class="flex-1 flex justify-center items-center px-4 sm:px-6 md:px-10 py-8">
     {% block content %}{% endblock %}
   </main>
 
   <!-- Footer -->
-  <footer class="bg-slate-900 text-slate-400 py-6 text-center text-sm">
+  <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs sm:text-sm">
     © 2025 Expense Tracker · Built with Flask and 💙
   </footer>
+
 </body>
 </html>

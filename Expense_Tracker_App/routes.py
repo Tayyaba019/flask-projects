@@ -50,22 +50,34 @@ def register_routes(db, app,bcrypt):
             db.session.commit()
             return redirect(url_for('login'))
         
-    @app.route('/login',methods = ['GET','POST'])
-    def login(): 
-        if request.method == 'GET': 
-            return render_template('login.html')
-        elif request.method == 'POST': 
-            username = request.form.get('username')
-            password = request.form.get('password')
+   
 
-            user = User.query.filter(User.username == username).first()
-            if bcrypt.check_password_hash(user.password ,password): 
+    @app.route('/login', methods=['GET', 'POST'])
+    def login():
+        # 🧠 Redirect already logged-in users to dashboard
+        if current_user.is_authenticated:
+            return redirect(url_for('dashboard'))
+
+        if request.method == 'GET':
+            return render_template('login.html')
+
+        elif request.method == 'POST':
+            username = request.form.get('username', '').strip()
+            password = request.form.get('password', '').strip()
+
+            # Fetch the user from DB
+            user = User.query.filter_by(username=username).first()
+
+            # ✅ Verify user existence and password match
+            if user and bcrypt.check_password_hash(user.password, password):
                 login_user(user)
+                flash("Successfully logged in!", "success")
                 return redirect(url_for('dashboard'))
-            else: 
-                flash("Invalid credentials", "error")
-        return render_template('login.html')
-    
+            else:
+                flash("Invalid username or password", "error")
+                return render_template('login.html')
+
+        
     @app.route('/logout')
     def logout(): 
         logout_user()

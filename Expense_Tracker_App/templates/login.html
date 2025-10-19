@@ -2,25 +2,33 @@
 {% block title %}Login · Expense Tracker{% endblock %}
 
 {% block content %}
-<div class="w-full max-w-md bg-slate-900 p-8 rounded-2xl shadow-xl border border-slate-800">
-  <h2 class="text-2xl font-semibold mb-6 text-center">Login</h2>
+<div class="w-full flex justify-center items-center px-4 sm:px-6 py-10">
+  <div class="w-full max-w-sm sm:max-w-md md:max-w-lg bg-slate-900 p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-800">
 
-  <form method="POST" action="{{ url_for('login') }}" class="space-y-4">
-    <div>
-      <label>Username</label>
-      <input type="text" name="username" required
-             class="w-full rounded-xl bg-slate-800 border border-slate-700 px-3 py-2 text-slate-100"/>
-    </div>
-    <div>
-      <label>Password</label>
-      <input type="password" name="password" required
-             class="w-full rounded-xl bg-slate-800 border border-slate-700 px-3 py-2 text-slate-100"/>
-    </div>
-    <button class="w-full bg-brand text-white py-2 rounded-xl hover:bg-brand/80">Login</button>
-  </form>
+    <h2 class="text-2xl sm:text-3xl font-semibold mb-6 text-center">Login</h2>
 
-  <p class="mt-4 text-sm text-slate-400 text-center">
-    Don’t have an account? <a href="{{ url_for('signup') }}" class="text-brand hover:underline">Sign up</a>
-  </p>
+    <form method="POST" action="{{ url_for('login') }}" class="space-y-4">
+      <div>
+        <label class="block mb-1 text-sm sm:text-base">Username</label>
+        <input type="text" name="username" required
+               class="w-full rounded-xl bg-slate-800 border border-slate-700 px-3 py-2 sm:py-3 text-slate-100 focus:outline-none focus:ring-2 focus:ring-cyan-500" />
+      </div>
+
+      <div>
+        <label class="block mb-1 text-sm sm:text-base">Password</label>
+        <input type="password" name="password" required
+               class="w-full rounded-xl bg-slate-800 border border-slate-700 px-3 py-2 sm:py-3 text-slate-100 focus:outline-none focus:ring-2 focus:ring-cyan-500" />
+      </div>
+
+      <button class="w-full bg-cyan-600 text-white py-2 sm:py-3 rounded-xl font-medium hover:bg-cyan-500 transition">
+        Login
+      </button>
+    </form>
+
+    <p class="mt-4 text-sm text-slate-400 text-center">
+      Don’t have an account?
+      <a href="{{ url_for('signup') }}" class="text-cyan-400 hover:underline">Sign up</a>
+    </p>
+  </div>
 </div>
 {% endblock %}
