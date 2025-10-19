@@ -10,18 +10,18 @@
 <body class="bg-slate-950 text-white flex flex-col min-h-screen">
 
   <!-- Navbar -->
-  <nav class="bg-slate-900 px-6 py-4">
+  <nav class="bg-slate-900 px-6 py-4 relative">
+    <!-- ✅ Checkbox must be a direct child of the same parent as the mobile menu -->
+    <input type="checkbox" id="menu-toggle" class="peer hidden" />
+
     <div class="flex justify-between items-center">
       <!-- Logo -->
       <a href="{{ url_for('home') }}" class="text-xl font-bold">Expense Tracker</a>
 
-      <!-- Hidden checkbox to toggle menu -->
-      <input type="checkbox" id="menu-toggle" class="peer hidden" />
-
-      <!-- Hamburger icon -->
-      <label for="menu-toggle" class="cursor-pointer md:hidden">
+      <!-- Hamburger icon (visible on mobile) -->
+      <label for="menu-toggle" class="cursor-pointer md:hidden z-50">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-             viewBox="0 0 24 24" stroke="currentColor">
+             viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M4 6h16M4 12h16M4 18h16" />
         </svg>
@@ -36,8 +36,8 @@
       </div>
     </div>
 
-    <!-- ✅ Mobile Links (MUST be a sibling of checkbox) -->
-    <div class="hidden peer-checked:flex flex-col mt-4 space-y-3 md:hidden bg-slate-800 p-4 rounded-lg">
+    <!-- Mobile Links (must be sibling of checkbox) -->
+    <div class="hidden peer-checked:flex flex-col mt-3 space-y-3 md:hidden bg-slate-800 p-4 rounded-lg shadow-sm absolute left-0 right-0 z-40">
       <a href="{{ url_for('home') }}" class="block hover:text-cyan-400">Home</a>
       <a href="{{ url_for('login') }}" class="block hover:text-cyan-400">Dashboard</a>
       <a href="{{ url_for('signup') }}" class="block hover:text-cyan-400">Signup</a>

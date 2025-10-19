@@ -18,37 +18,30 @@
 
   <body class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white flex flex-col min-h-screen">
 
-    <!-- ✅ Hidden toggle checkbox placed OUTSIDE header (so it’s sibling to sidebar) -->
-    <input type="checkbox" id="menu-toggle" class="peer hidden" />
-
-    <!-- 🔹 MOBILE HEADER (visible only on small screens) -->
+    <!-- 🔹 MOBILE HEADER (only visible on small screens) -->
     <header class="md:hidden flex items-center justify-between px-4 py-3 bg-slate-800 border-b border-slate-700">
       <h1 class="text-lg font-bold text-brand">💰 Expense Tracker</h1>
 
-      <!-- Hamburger button -->
-      <label for="menu-toggle" class="cursor-pointer">
+      <!-- ✅ Hidden checkbox TOGGLE -->
+      <input type="checkbox" id="menu-toggle" class="peer hidden" />
+
+      <!-- Hamburger icon -->
+      <label for="menu-toggle" class="cursor-pointer z-50">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
              viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </label>
-    </header>
 
-    <!-- 🔹 MAIN LAYOUT -->
-    <div class="flex flex-1">
-
-      <!-- ✅ Sidebar -->
+      <!-- ✅ Sidebar (MUST be a sibling of the checkbox for peer to work) -->
       <aside
-        class="fixed md:static inset-y-0 left-0 z-40 w-64 transform -translate-x-full 
-               peer-checked:translate-x-0 md:translate-x-0 transition-transform duration-300 
-               bg-slate-800/90 backdrop-blur-lg border-r border-slate-700 p-6 
-               flex flex-col justify-between h-full md:h-auto">
-
+        class="fixed inset-y-0 left-0 z-40 w-64 transform -translate-x-full
+               peer-checked:translate-x-0 transition-transform duration-300
+               bg-slate-800/90 backdrop-blur-lg border-r border-slate-700 p-6
+               flex flex-col justify-between h-full md:hidden">
         <div>
-          <h2 class="text-2xl font-extrabold mb-8 text-brand hidden md:block">
-            💰 Expense Tracker
-          </h2>
+          <h2 class="text-2xl font-extrabold mb-8 text-brand">💰 Expense Tracker</h2>
 
           <nav class="flex flex-col gap-4 text-slate-300">
             <a href="{{ url_for('dashboard') }}" class="hover:text-brand transition">Dashboard</a>
@@ -63,10 +56,30 @@
           <a href="{{ url_for('logout') }}" class="text-red-400 hover:text-red-300 font-semibold">Logout</a>
         </div>
       </aside>
+    </header>
 
-      <!-- ✅ Main Content -->
+    <!-- 🔹 MAIN LAYOUT (for desktop) -->
+    <div class="flex flex-1">
+      <!-- Desktop Sidebar -->
+      <aside
+        class="hidden md:flex md:flex-col md:w-64 bg-slate-800/90 border-r border-slate-700 p-6">
+        <h2 class="text-2xl font-extrabold mb-8 text-brand">💰 Expense Tracker</h2>
+
+        <nav class="flex flex-col gap-4 text-slate-300">
+          <a href="{{ url_for('dashboard') }}" class="hover:text-brand transition">Dashboard</a>
+          <a href="{{ url_for('add') }}" class="hover:text-brand transition">Add Expense</a>
+          <a href="{{ url_for('view') }}" class="hover:text-brand transition">View Expenses</a>
+          <a href="{{ url_for('index') }}" class="hover:text-brand transition">Filter & Charts</a>
+          <a href="{{ url_for('export_csv') }}" class="hover:text-brand transition">Export CSV</a>
+        </nav>
+
+        <div class="mt-auto border-t border-slate-700 pt-4">
+          <a href="{{ url_for('logout') }}" class="text-red-400 hover:text-red-300 font-semibold">Logout</a>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
       <main class="flex-1 md:ml-0 p-4 sm:p-6 md:p-10 overflow-y-auto bg-slate-900/60">
-        <!-- 🔔 FLASH MESSAGES -->
         {% with messages = get_flashed_messages(with_categories=true) %}
           {% if messages %}
             <div class="space-y-4 mb-6">
@@ -88,7 +101,6 @@
             </div>
           {% endif %}
         {% endwith %}
-        <!-- END FLASH MESSAGES -->
 
         {% block content %}{% endblock %}
       </main>
