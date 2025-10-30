@@ -20,9 +20,12 @@ Registers a new user.
 {
   "username": "tayyaba",
   "password": "mypassword123"
-}```
+}
+```
+
 
 Response Example:
+
 ```
 {
   "message": "User registered successfully!"
@@ -36,6 +39,7 @@ POST /login
 Authenticates a user and returns a JWT token.
 
 Request Body (JSON):
+
 ```
 {
   "email": "tayyaba@example.com",
