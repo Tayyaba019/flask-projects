@@ -22,5 +22,5 @@ def create_app():
     notes_register(app,api,bcrypt,jwt)
 
 
-    return app,api
+    return app
 
