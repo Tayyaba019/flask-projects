@@ -1,0 +1,31 @@
+# Ignore Python cache & compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environments
+.env/
+env/
+venv/
+venv_test/
+
+# Ignore local environment files
+.env
+.env.local
+ 
+
+# Ignore database files (if local only)
+*.sqlite3
+*.db
+
+# Ignore OS / editor files
+.DS_Store
+Thumbs.db
+
+# Ignore instance folder (Flask’s local configs)
+instance/
+
+# Ignore temporary build or test files
+*.log
+*.bak
